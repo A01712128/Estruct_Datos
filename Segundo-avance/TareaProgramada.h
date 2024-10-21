@@ -11,12 +11,14 @@ private:
     string fechaVencimiento;
 
 public:
-    TareaProgramada(string descripcion, int importancia, string fechaVencimiento)
-        : Tarea(descripcion, importancia), fechaVencimiento(fechaVencimiento) {}
+    TareaProgramada(string descripcion, int importancia, string fechaVencimiento, int tiempoEstimado)
+        : Tarea(descripcion, importancia, tiempoEstimado), fechaVencimiento(fechaVencimiento) {}
 
     void mostrarInformacion() const override {
-        cout << "Tarea programada - Descripción: " << descripcion << ", Importancia: " << importancia
-             << ", Fecha de vencimiento: " << fechaVencimiento << endl;
+        cout << "Tarea programada - Descripción: " << descripcion 
+             << ", Importancia: " << importancia 
+             << ", Fecha de vencimiento: " << fechaVencimiento 
+             << ", Tiempo estimado: " << tiempoEstimado << " minutos" << endl;
     }
 };
 
