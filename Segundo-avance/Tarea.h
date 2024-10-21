@@ -9,9 +9,11 @@ class Tarea {
 protected:
     string descripcion;
     int importancia;
+    int tiempoEstimado; // Tiempo estimado en minutos
 
 public:
-    Tarea(string descripcion, int importancia) : descripcion(descripcion), importancia(importancia) {}
+    Tarea(string descripcion, int importancia, int tiempoEstimado) 
+        : descripcion(descripcion), importancia(importancia), tiempoEstimado(tiempoEstimado) {}
 
     virtual ~Tarea() {} // Destructor virtual
 
@@ -19,7 +21,11 @@ public:
         return importancia;
     }
 
-    virtual void mostrarInformacion() const = 0; // Método virtual puro
+    int obtenerTiempoEstimado() const {
+        return tiempoEstimado;
+    }
+
+    virtual void mostrarInformacion() const = 0; // Metodo virtual puro
 };
 
 #endif
