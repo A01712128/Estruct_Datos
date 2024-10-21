@@ -3,52 +3,36 @@
 
 #include "Tarea.h"
 #include <vector>
-using namespace std;
+#include <algorithm>
 
-void fusionar(vector<Tarea*>& tareas, int inicio, int medio, int fin) {
-    int n1 = medio - inicio + 1;
-    int n2 = fin - medio;
-
-    vector<Tarea*> izquierda(n1);
-    vector<Tarea*> derecha(n2);
-
-    for (int i = 0; i < n1; i++)
-        izquierda[i] = tareas[inicio + i];
-    for (int j = 0; j < n2; j++)
-        derecha[j] = tareas[medio + 1 + j];
-
-    int i = 0, j = 0, k = inicio;
-
-    while (i < n1 && j < n2) {
-        if (izquierda[i]->obtenerImportancia() >= derecha[j]->obtenerImportancia()) {
-            tareas[k] = izquierda[i];
-            i++;
-        } else {
-            tareas[k] = derecha[j];
-            j++;
-        }
-        k++;
-    }
-
-    while (i < n1) {
-        tareas[k] = izquierda[i];
-        i++;
-        k++;
-    }
-
-    while (j < n2) {
-        tareas[k] = derecha[j];
-        j++;
-        k++;
-    }
+// Funcion de comparacion para ordenar por importancia
+bool compararPorImportancia(Tarea* t1, Tarea* t2) {
+    return t1->obtenerImportancia() > t2->obtenerImportancia();
 }
 
-void mergeSort(vector<Tarea*>& tareas, int inicio, int fin) {
-    if (inicio < fin) {
-        int medio = inicio + (fin - inicio) / 2;
-        mergeSort(tareas, inicio, medio);
-        mergeSort(tareas, medio + 1, fin);
-        fusionar(tareas, inicio, medio, fin);
+// Funcion de comparacion para ordenar por tiempo estimado
+bool compararPorTiempoEstimado(Tarea* t1, Tarea* t2) {
+    return t1->obtenerTiempoEstimado() < t2->obtenerTiempoEstimado();
+}
+
+// Funcion de ordenamiento por seleccion
+void seleccionSort(std::vector<Tarea*>& tareas, bool porTiempoEstimado) {
+    for (size_t i = 0; i < tareas.size() - 1; i++) {
+        size_t indiceMinimo = i;
+        for (size_t j = i + 1; j < tareas.size(); j++) {
+            if (porTiempoEstimado) {
+                if (compararPorTiempoEstimado(tareas[j], tareas[indiceMinimo])) {
+                    indiceMinimo = j;
+                }
+            } else {
+                if (compararPorImportancia(tareas[j], tareas[indiceMinimo])) {
+                    indiceMinimo = j;
+                }
+            }
+        }
+        if (indiceMinimo != i) {
+            swap(tareas[i], tareas[indiceMinimo]);
+        }
     }
 }
 
