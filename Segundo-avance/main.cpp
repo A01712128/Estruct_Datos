@@ -9,8 +9,8 @@ int main() {
     vector<Tarea*> listaTareas;
 
     // Datos precargados como ejemplo
-    listaTareas.push_back(new TareaSimple("Comprar víveres", 3));
-    listaTareas.push_back(new TareaProgramada("Presentación del proyecto", 5, "25-10-2024"));
+    listaTareas.push_back(new TareaSimple("Comprar despensa", 3));
+    listaTareas.push_back(new TareaProgramada("Presentacion del proyecto", 5, "25-10-2024"));
     listaTareas.push_back(new TareaSimple("Sacar a pasear al perro", 2));
     listaTareas.push_back(new TareaProgramada("Visita al dentista", 4, "30-10-2024"));
 
