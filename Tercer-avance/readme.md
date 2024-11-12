@@ -30,12 +30,12 @@ Razón del cambio: Se añadió la capacidad de guardar las tareas en un archivo 
 ## Instrucciones para compilar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
 
-`g++ main.cpp -o primer_avance` 
+`g++ main.cpp -o tercer_avance` 
 
 ## Instrucciones para ejecutar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
 
-`./primer_avance` 
+`./tercer_avance` 
 
 ## Descripción de las entradas del avance de proyecto
 tipo,descripcion,importancia,tiempoEstimado,fechaVencimiento
